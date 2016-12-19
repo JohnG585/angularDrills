@@ -11,19 +11,21 @@
 
     $stateProvider
       .state({
-        name: 'list-houses',
+        name: 'app',
+        component: 'app',
+        abstract: true,
+      })
+      .state({
+        name: 'home',
+        parent: 'app',
         url: '/',
-        component: 'houseList',
+        component: 'home',
       })
       .state({
-        name: 'new-house',
-        url: '/houses/new',
-        component: 'houseNew',
-      })
-      .state({
-        name: 'show-house',
-        url: '/houses/:id',
-        component: 'houseShow',
+        name: 'listings',
+        parent: 'app',
+        url: '/listings',
+        component: 'listings',
       })
   }
 

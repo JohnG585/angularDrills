@@ -12,7 +12,7 @@
 
         vm.addHouse = function () {
           houseService.addHouse(vm.house)
-          // TODO: go to the appropriate URL here
+          $state.go('show-house', {id: vm.house.id})
         }
       },
       template: `

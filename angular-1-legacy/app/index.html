@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="app">
 <head>
   <meta charset="utf-8">
   <title>Angular</title>
   <base href="/">
-  <script src="https://code.angularjs.org/1.5.7/angular.js"></script>
-  <script src="https://code.angularjs.org/1.5.7/angular-route.js"></script>
-  <script src="/javascripts/module.js" charset="utf-8"></script>
-  <script src="/javascripts/services.js" charset="utf-8"></script>
-  <script src="/javascripts/routes.js"></script>
-  <script src="/javascripts/controllers.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="https://code.angularjs.org/1.6.0/angular.js"></script>
+  <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
+
+  <script src="/app/app.module.js"></script>
+  <script src="/app/app.component.js"></script>
+  <script src="/app/app.config.js"></script>
+  <script src="/home/home.component.js"></script>
+  <script src="/listings/listings.component.js"></script>
+  <script src="/quotes/quotes.component.js"></script>
+  <script src="/quotes/quotes.service.js"></script>
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body ng-controller="main">
-  <div class="heading">
-    <div class="title">
-      <h1>Angular Homes</h1>
-    </div>
-    <div class="quoteBlock">
-      <div><div ng-bind-html="quote"></div><i ng-click="reloadQuote()" class="fa fa-refresh"></i><p class="author">-{{author}}</p></div>
-    </div>
-  </div>
-
-  <ng-view></ng-view>
+<body>
+  <ui-view></ui-view>
 </html>
