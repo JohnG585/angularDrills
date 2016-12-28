@@ -30,8 +30,8 @@
       vm.addingPost = !vm.addingPost
     }
 
-    function createPost() {
-      postService.create(vm.post)
+    function createPost(post) {
+      postService.create(post)
         .then(post => {
           vm.posts.push(post)
           vm.togglePostForm()

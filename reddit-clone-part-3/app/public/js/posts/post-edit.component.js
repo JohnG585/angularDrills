@@ -18,8 +18,8 @@
       postService.findById($stateParams.id).then(post => vm.post = post)
     }
 
-    function updatePost() {
-      postService.update($stateParams.id, vm.post)
+    function updatePost(post) {
+      postService.update($stateParams.id, post)
         .then(() => $state.go('posts'))
     }
 
