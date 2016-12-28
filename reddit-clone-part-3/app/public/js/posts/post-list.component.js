@@ -10,8 +10,8 @@
       controller: controller
     })
 
-  controller.$inject = ['$http']
-  function controller($http) {
+  controller.$inject = ['postService', 'commentService']
+  function controller(postService, commentService) {
     const vm = this
 
     vm.$onInit = onInit
@@ -22,8 +22,8 @@
     vm.voteDown = voteDown
 
     function onInit() {
-      $http.get('/api/posts')
-        .then(response => vm.posts = response.data)
+      postService.all()
+        .then(posts => vm.posts = posts)
     }
 
     function togglePostForm() {
@@ -31,36 +31,30 @@
     }
 
     function createPost() {
-      $http.post('/api/posts', vm.post)
-        .then(response => {
-          response.data.comments = []
-          vm.posts.push(response.data)
+      postService.create(vm.post)
+        .then(post => {
+          vm.posts.push(post)
           vm.togglePostForm()
           delete vm.post
         })
     }
 
     function createComment(post) {
-      $http.post(`/api/posts/${post.id}/comments`, post.newComment )
-        .then(response => {
-          post.comments.push(response.data)
+      commentService.create(post, post.newComment)
+        .then(comment => {
+          post.comments.push(comment)
           delete post.newComment
         })
     }
 
     function voteUp(post) {
-      $http.post(`/api/posts/${post.id}/votes`)
-        .then(response => {
-          post.vote_count = response.data.vote_count
-        })
+      postService.upvote(post)
+        .then(voteCount => post.vote_count = voteCount )
     }
 
     function voteDown(post) {
-      if(post.vote_count == 0) return
-      $http.delete(`/api/posts/${post.id}/votes`)
-        .then(response => {
-          post.vote_count = response.data.vote_count
-        })
+      postService.downvote(post)
+        .then(voteCount => post.vote_count = voteCount)
     }
 
   }

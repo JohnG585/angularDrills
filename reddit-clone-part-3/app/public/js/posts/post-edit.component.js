@@ -7,29 +7,20 @@
       controller: controller
     })
 
-  controller.$inject = ['$http', '$stateParams', '$state']
-  function controller($http, $stateParams, $state) {
+  controller.$inject = ['$stateParams', '$state', 'postService']
+  function controller($stateParams, $state, postService) {
     const vm = this
 
     vm.$onInit = onInit
     vm.updatePost = updatePost
 
     function onInit() {
-      $http.get(`/api/posts/${$stateParams.id}`)
-        .then(response => {
-          vm.post = response.data
-          $http.get(`/api/posts/${$stateParams.id}/comments`)
-            .then(response => {
-              vm.post.comments = response.data
-            })
-        })
+      postService.findById($stateParams.id).then(post => vm.post = post)
     }
 
     function updatePost() {
-      $http.patch(`/api/posts/${$stateParams.id}`, vm.post)
-        .then(response => {
-            $state.go('posts')
-        })
+      postService.update($stateParams.id, vm.post)
+        .then(() => $state.go('posts'))
     }
 
   }
