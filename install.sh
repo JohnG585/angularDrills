@@ -12,5 +12,3 @@ cd reddit-clone-part-1 && npm install
 cd ../
 cd reddit-clone-part-2 && npm install
 cd ../
-cd reddit-clone-part-3 && npm install
-cd ../

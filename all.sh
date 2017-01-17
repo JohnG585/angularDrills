@@ -12,5 +12,3 @@ cd reddit-clone-part-1 && npm test
 cd ../
 cd reddit-clone-part-2 && npm test
 cd ../
-cd reddit-clone-part-3 && npm test
-cd ../

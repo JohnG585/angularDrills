@@ -9,6 +9,8 @@ npm start
 
 To run tests, run `npm test`
 
+> Check the "test/screenshots" folder for examples of what each test is looking for.
+
 ## Upgrade to Components
 
 NOTE: Whenever you convert from a template/controller to a component, you must also convert to use the `controllerAs` syntax:
