@@ -3,7 +3,7 @@ const HtmlScreenshotReporter = require(
 const path = require('path')
 
 const reporter = new HtmlScreenshotReporter({
-  dest: path.join(__dirname, 'screenshots'),
+  dest: path.join(__dirname, 'tmp'),
   filename: 'report.html'
 });
 
