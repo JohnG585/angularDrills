@@ -1,3 +1,5 @@
+cd angular-1-legacy && npm test
+cd ../
 cd simple-interaction && npm test
 cd ../
 cd list-management && npm test
@@ -9,4 +11,6 @@ cd ../
 cd reddit-clone-part-1 && npm test
 cd ../
 cd reddit-clone-part-2 && npm test
+cd ../
+cd reddit-clone-part-3 && npm test
 cd ../
