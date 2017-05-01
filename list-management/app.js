@@ -33,8 +33,9 @@
         ]
       }
       vm.deleteItem = function(e, item) {
+        console.log(item)
         e.preventDefault()
-        vm.items.splice(vm.items.indexOf(item, 1))
+        vm.items.splice(vm.items.indexOf(item),1)
       }
       vm.addItem = function() {
         vm.items.push(vm.item)
