@@ -61,20 +61,31 @@
   function controller($http) {
     const vm = this
     vm.expenses = []
-    vm.addExpense = addExpense
-    vm.editComplete = editComplete
-    vm.deleteExpense = deleteExpense
-    vm.expense = {}
+    vm.expense = {
+      category: vm.category,
+      amount: vm.amount
+    }
+
 
     vm.$onInit = function() {
-      $http.get('/').then(function(response) {
+      $http.get('/api/expenses').then((expenses) => {
         vm.expenses = expenses.data
       })
     }
 
-    function addExpense(category, amount) {
-
+    vm.addExpense = function() {
+      $http.post('/api/expenses', vm.expense).then((newExpense) => {
+        vm.expenses.push(newExpense.data)
+        delete vm.expense
+      })
     }
+
+    vm.deleteExpense = function(id, expense) {
+      vm.expenses.splice(vm.expenses.indexOf(expense), 1)
+      $http.delete(`/api/expenses/${id}`).then((allExpenses) => {
+      })
+    }
+
   }
 
 }());
