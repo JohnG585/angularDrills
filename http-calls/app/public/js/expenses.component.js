@@ -84,23 +84,29 @@
     }
 
     vm.deleteExpense = function(id, expense) {
-      vm.expenses.splice(vm.expenses.indexOf(expense), 1)
-      $http.delete(`/api/expenses/${id}`).then((allExpenses) => {
+      $http.delete(`/api/expenses/${id}`).then((reponse) => {
+        $http.get('/api/expenses/')
+          .then(function(response) {
+              vm.expenses = response.data
+})
       })
     }
 
-    vm.editExpense = function(id, expense) {
+    vm.editComplete = function(id, expense) {
       const editID = id
-      vm.expenses.splice(vm.expenses.indexOf(expense), 1, expense)
       vm.editedExpense = {
         id: editID,
-        category: vm.category,
-        amount: vm.amount
+        category: vm.editExpense.category,
+        amount: vm.editExpense.amount
       }
-      $http.patch(`/api/expenses/editID`, vm.editedExpense).then((allExpenses) => {
 
+      $http.patch(`/api/expenses/${editID}`, vm.editedExpense).then((response) => {
+        $http.get('/api/expenses/')
+          .then(function(response) {
+              vm.expenses = response.data
       })
-    }
+    })
+  }
   }
 
 }());

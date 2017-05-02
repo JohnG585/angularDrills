@@ -3,7 +3,7 @@ const router = express.Router()
 const knex = require('../db')
 
 router.get('/', (req, res, next) => {
-  knex('expenses')
+  knex('expenses').orderBy('id')
     .then(expenses => res.json(expenses))
     .catch(err => next(err))
 })
