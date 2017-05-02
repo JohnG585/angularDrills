@@ -1,0 +1,20 @@
+{
+  "name": "angular-drills",
+  "version": "1.0.0",
+  "description": "Test-driven code challenges to support the Angular Curriculum!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnG585/angular-drills.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnG585/angular-drills/issues"
+  },
+  "homepage": "https://github.com/JohnG585/angular-drills#readme"
+}
