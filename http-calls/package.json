@@ -19,6 +19,7 @@
     "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
+    "lite-server": "^2.3.0",
     "lolex": "^1.5.0",
     "mocha": "^2.5.3",
     "morgan": "~1.7.0",
@@ -29,9 +30,10 @@
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
-    "angular": "^1.6.0",
+    "angular": "1.6.0",
     "jquery": "^3.0.0",
     "knex": "^0.12.6",
     "pg": "^6.1.2"
-  }
+  },
+  "main": "index.js"
 }

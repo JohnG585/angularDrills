@@ -4,10 +4,19 @@
   angular.module('app')
     .component('expenses', {
       controller: controller,
-      template: ``
+      templateURL: './template.html'
     })
 
-  function controller() {
+  controller.$inject = ['http']
+  function controller(http) {
+    const vm = this
+    vm.addExpense = addExpense
+    vm.editComplete = editComplete
+    vm.deleteExpense = deleteExpense
+  }
+
+  vm.$onInit = function() {
+    $http.get('/')
   }
 
 }());
