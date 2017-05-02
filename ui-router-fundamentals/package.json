@@ -26,7 +26,7 @@
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
-    "angular": "^1.6.0",
+    "angular": "1.6.0",
     "angular-ui-router": "1.0.0-beta.3",
     "jquery": "^3.0.0",
     "ui-router": "^1.0.0-alpha.3"
