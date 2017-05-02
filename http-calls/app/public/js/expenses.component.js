@@ -33,7 +33,10 @@
             <td>{{ expense.category }}</td>
             <td>{{ expense.amount }}</td>
             <td>
-              <a href="#">edit</a>
+              <a href="#" ng-click = "$ctrl.editFormShow = !$ctrl.editFormShow;
+              $ctrl.editExpense.id = expense.id;
+              $ctrl.editExpense.category = expense.category;
+              $ctrl.editExpense.amount = expense.amount" id = "{{ expense.id }}">Edit</a>
               <a href="#" ng-click="$ctrl.deleteExpense(expense.id)">Delete</a>
             </td>
           </tr>
@@ -86,6 +89,18 @@
       })
     }
 
+    vm.editExpense = function(id, expense) {
+      const editID = id
+      vm.expenses.splice(vm.expenses.indexOf(expense), 1, expense)
+      vm.editedExpense = {
+        id: editID,
+        category: vm.category,
+        amount: vm.amount
+      }
+      $http.patch(`/api/expenses/editID`, vm.editedExpense).then((allExpenses) => {
+
+      })
+    }
   }
 
 }());
