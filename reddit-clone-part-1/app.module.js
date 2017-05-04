@@ -1,7 +1,7 @@
 (function() {
   'use strict'
 
-  angular.module('app', [])
+  angular.module('app', ['angularMoment'])
   .component('navTab', {
     templateUrl: 'templates/nav.html'
   })
@@ -17,7 +17,7 @@
         const vm = this
         vm.post = {}
         vm.posts = []
-
+        vm.selection = "-votes"
         vm.$onInit = function() {
           vm.posts = [
             {
@@ -26,7 +26,8 @@
             author:"Dayle",
             body:"If anyone wants it, please send up a smoke signal. I am against technology and recognizing irony.",
             image:"./images/pexels-photo-69212.jpeg",
-            votes:4
+            votes:4,
+            time: '02-10-2017 13:15'
             },
             {
             id:2,
@@ -34,7 +35,8 @@
             author: 'Swain',
             body: "That Leonard Cohen-knockoff can\'t even grow original facial hair. Unfollow.",
             image:"./images/pexels-photo-121442.jpeg",
-            votes: 2
+            votes: 2,
+            time: '04-23-2017 05:30'
             },
             {
             id:3,
@@ -42,7 +44,8 @@
             author: 'Tiphany',
             body: "What\'s the point...ya know?",
             image:"./images/pexels-photo-192440.jpeg",
-            votes: 25
+            votes: 25,
+            time: '03-20-2017 14:32'
             },
             {
             id:4,
@@ -50,7 +53,8 @@
             author: 'Heathcliff',
             body: "I was a HUGE fan of theirs back when Amelia had just left Mountain Man, but ever since 'Radio' became a huge hit both of them have stopped replying to my emails. Like, what's the point of becoming famous if you're just going to ignore the fans who have been there since the beginning, you know?",
             image:"./images/pexels-photo-214135.jpeg",
-            votes: 6
+            votes: 6,
+            time: '03-21-2017 17:22'
             },
           ]
         }
@@ -60,7 +64,8 @@
             author: vm.post.author,
             body: vm.post.body,
             image: vm.post.image,
-            votes: 0
+            votes: 0,
+            time: new Date()
           }
           vm.posts.push(vm.post)
           delete vm.post
