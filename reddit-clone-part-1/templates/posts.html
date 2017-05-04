@@ -6,13 +6,14 @@
 
     <ul class="nav nav-pills">
         <li role="presentation" class="active">
-            <input type="search" class="form-control input-sm search-form" placeholder="Filter">
+            <input ng-model = "filterSearch" type="search" class="form-control input-sm search-form" placeholder="Filter">
         </li>
         <div class="form-inline">
             <label for="sort">  Sort by </label>
-            <select class="form-control" id="sort">
-  <option>Some text</option>
-  <option>Some text</option>
+            <select ng-init = "ordering = '-votes'" ng-model = "ordering" class="form-control" ng-change = "$ctrl.filtering(ordering)" id="sort">
+  <option value = "-votes">Votes</option>
+  <option value = "title">Title</option>
+  <option value = "author">Author</option>
 </select>
         </div>
     </ul>
@@ -48,25 +49,23 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" ng-repeat="post in $ctrl.posts | orderBy:$ctrl.selection | filter: filterSearch">
 
             <div class="well">
                 <div class="media-left">
                     <img class="media-object">
                 </div>
-                <div class="media-body" ng-repeat="post in $ctrl.posts">
+                <div class="media-body">
+                  <div class="text-left" ng-model="$ctrl.author">
+                      {{post.author}}
+                  </div>
                     <h4 class="media-heading">
       {{post.title}}
       |
       <a ng-click="post.votes = post.votes + 1"><i class="glyphicon glyphicon-arrow-up"></i></a>
-      <a ng-click="$ctrl.downVote(post)"><i class="glyphicon glyphicon-arrow-down"></i></a>
-    <p>
       {{post.votes}}
-    <p>
+      <a ng-click="$ctrl.downVote(post)"><i class="glyphicon glyphicon-arrow-down"></i></a>
     </h4>
-                    <div class="text-right" ng-model="$ctrl.author">
-                        {{post.author}}
-                    </div>
                     <img src='{{post.image}}' width="50%">
                     <p>
                         {{post.body}}
@@ -79,4 +78,5 @@
 
         </div>
     </div>
+    <br>
 </main>
