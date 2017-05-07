@@ -3,24 +3,27 @@
 
   angular.module('app')
     .component('houseList', {
-      controller: function (houseService) {
-        const vm = this
-
-        vm.$onInit = function () {
-          vm.houses = houseService.houses
-        }
-      },
+      controller: controller,
       template: `
         <h1>Houses</h1>
 
         <ul>
           <li ng-repeat="house in $ctrl.houses">
-            <!-- TODO: add link here -->
+            <a ui-sref="show({id:{{house.id}} })">{{house.name}}</a>
           </li>
         </ul>
 
-        <!-- TODO: add link here -->
+        <a ui-sref="new">Create New House</a>
       `
     })
+
+    controller.$inject = ['$state', 'houseService']
+    function controller ($state, houseService) {
+      const vm = this
+      console.log("hi");
+      vm.$onInit = function () {
+        vm.houses = houseService.houses
+      }
+    }
 
 }());

@@ -3,18 +3,7 @@
 
   angular.module('app')
     .component('houseNew', {
-      controller: function ($state, houseService) {
-        const vm = this
-
-        vm.$onInit = function () {
-          vm.houses = houseService.houses
-        }
-
-        vm.addHouse = function () {
-          houseService.addHouse(vm.house)
-          // TODO: go to the appropriate URL here
-        }
-      },
+      controller: controller,
       template: `
         <h1>New House</h1>
 
@@ -31,5 +20,19 @@
         </form>
       `
     })
+    controller.$inject = ['$state', 'houseService']
+    function controller($state, houseService) {
+      const vm = this
+
+      vm.$onInit = function () {
+        console.log(houseService.houses);
+        vm.houses = houseService.houses
+      }
+
+      vm.addHouse = function () {
+        houseService.addHouse(vm.house)
+        $state.go('home')
+      }
+    }
 
 }());
