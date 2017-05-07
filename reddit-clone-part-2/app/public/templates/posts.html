@@ -1,0 +1,94 @@
+<main class="container">
+
+    <div class="pull-right">
+        <p><a class="btn btn-info" data-toggle="collapse" id="postButton" ng-click="setText()" data-target="#myForm">New Post</a></p>
+    </div>
+
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active">
+            <input ng-model = "filterSearch" type="search" class="form-control input-sm search-form" placeholder="Filter">
+        </li>
+        <div class="form-inline">
+            <label for="sort">  Sort by </label>
+            <select ng-init = "ordering = '-votes'" ng-model = "ordering" class="form-control" ng-change = "$ctrl.filtering(ordering)" id="sort">
+  <option value = "-votes">Votes</option>
+  <option value = "title">Title</option>
+  <option value = "author">Author</option>
+</select>
+        </div>
+    </ul>
+
+    <div class="row collapse" id="myForm">
+        <div class="col-md-8">
+
+            <form novalidate name="$ctrl.postForm" ng-submit="$ctrl.postAdded()">
+                <div class="form-group"
+                ng-class="{'has-error': $ctrl.postForm.title.$invalid}"
+                >
+                    <label for="title">Title</label>
+                    <input id="title" class="form-control" required name="title" ng-model="$ctrl.post.title">
+                    <span ng-show="$ctrl.postForm.title.$invalid">Please enter a title</span>
+                  </div>
+                <div class="form-group"
+                ng-class="{'has-error': $ctrl.postForm.body.$invalid}"
+                >
+                    <label for="body">Body</label>
+                    <textarea id="body" class="form-control" ng-model="$ctrl.post.body" name="body" required></textarea>
+                    <span ng-show="$ctrl.postForm.body.$invalid">Please enter a body</span>
+                </div>
+                <div class="form-group"
+                ng-class="{'has-error': $ctrl.postForm.author.$invalid}"
+                >
+                    <label for="author">Author</label>
+                    <input id="author" class="form-control" ng-model="$ctrl.post.author" name="author" required>
+                    <span ng-show="$ctrl.postForm.author.$invalid">Please enter your name</span>
+                </div>
+                <div class="form-group"
+                ng-class="{'has-error': $ctrl.postForm.image.$invalid}"
+                >
+                    <label for="image-url">Image URL</label>
+                    <input id="image-url" class="form-control" ng-model="$ctrl.post.image" name="image" required>
+                    <span ng-show="$ctrl.postForm.image.$invalid">Please enter an image</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+    Create Post
+  </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" ng-repeat="post in $ctrl.posts | orderBy:$ctrl.selection | filter: filterSearch">
+
+            <div class="well">
+                <div class="media-left">
+                    <img class="media-object">
+                </div>
+                <div class="media-body">
+                  <div class="text-left" ng-model="$ctrl.author">
+                      {{post.author}}
+                  </div>
+                    <h4 class="media-heading">
+      {{post.title}}
+      |
+      <a ng-click="post.votes = post.votes + 1"><i class="glyphicon glyphicon-arrow-up"></i></a>
+      {{post.votes}}
+      <a ng-click="$ctrl.downVote(post)"><i class="glyphicon glyphicon-arrow-down"></i></a>
+    </h4>
+                    <img src='{{post.image}}' width="50%">
+                    <p>
+                        {{post.body}}
+                    </p>
+                    Posted on: {{ post.time | amCalendar }}
+                    <comment-box></comment-box>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+</main>
