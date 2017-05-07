@@ -4,14 +4,21 @@
   angular.module('app')
     .component('posts', {
       controller: postsController,
-      template: '../templates/posts.html'
+      templateUrl: './posts/posts.html'
     })
 
-    postsController.$inject = ['']
-      function postsController() {
+    postsController.$inject = ['postService']
+      function postsController(postService) {
         const vm = this
+          vm.posts = []
 
-        
+          vm.$onInit = function() {
+            postService.getPosts()
+              .then((posts) => {
+                vm.posts = posts
+              })
+          }
+
       }
 
 })()

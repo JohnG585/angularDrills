@@ -12,7 +12,7 @@
 
     $stateProvider
       .state({name: 'home', url: '/', component: 'posts'})
-      .state({name: 'edit', url: `/posts/${id}/edit`, component: 'editPost'})
+      .state({name: 'edit', url: '/posts/:id/edit', component: 'editPost'})
       .state({name: 'newPost', url: '/posts/new', component: 'newPost'})
   }
 

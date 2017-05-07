@@ -2,32 +2,42 @@
 <html ng-app="app">
   <head>
     <meta charset="utf-8">
-    <base href="/">
     <title>Reddit Clone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+    <script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
   </head>
+      <base href="/">
   <body>
 
-    <script src="/angular/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-    <script src="/moment/min/moment.min.js"></script>
-    <script src="/angular-moment/angular-moment.js"></script>
-    <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <ui-view></ui-view>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-    <script src="app.module.js"></script>
-    <script src="app.config.js"></script>
-    <script src="./posts/posts.component.js"></script>
-    <script src="./posts/solo.component.js"></script>
-    <script src="./posts/editPost.component.js"></script>
-    <script src="./forms/form.component.js"></script>
-    <script src="./posts/post.service.js"></script>
-    <script src="./posts/comment.service.js"></script>
+    <script src="/angular/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="/moment/min/moment.min.js"></script>
+  <script src="/angular-moment/angular-moment.js"></script>
+  <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+<script src="/posts/posts.component.js"></script>
+<script src="/posts/post.service.js"></script>
+
 
   </body>
 </html>
