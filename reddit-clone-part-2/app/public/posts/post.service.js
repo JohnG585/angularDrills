@@ -57,6 +57,18 @@
           })
         })
       }
+
+      this.comments = function(id) {
+        return $http.get(`/api/posts/${id}/comments`).then((results) => {
+          return results.data
+        })
+      }
+
+      this.addComment = function(id, comment) {
+        return $http.post(`/api/posts/${id}/comments`, comment).then((result) => {
+          return result.data
+        })
+      }
     }
 
 }());

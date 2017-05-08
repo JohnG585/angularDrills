@@ -12,7 +12,7 @@
         <div class="form-inline">
             <label for="sort">  Sort by </label>
             <select ng-model = "$ctrl.filtering" class="form-control" ng-change = "$ctrl.filtered()" id="sort">
-  <option value = "votes">Votes</option>
+  <option value = "-votes">Votes</option>
   <option value = "title">Title</option>
   <option value = "author">Author</option>
 </select>
@@ -87,7 +87,7 @@
                         {{post.body}}
                     </p>
                     Posted on: {{ post.created_at | amCalendar }}
-
+                  <comments post-id="post.id"></comments>
                 </div>
             </div>
         </div>
