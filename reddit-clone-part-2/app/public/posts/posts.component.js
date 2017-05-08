@@ -54,10 +54,12 @@
 
         vm.downVote = function(id) {
           console.log('clicked!')
-          postService.downVote(id).then(() => {
             let index = vm.posts.find(findPostID)
+            if (index.vote_count > 0) {
+                postService.downVote(id).then(() => {
                 index.vote_count--
           })
+        }
           function findPostID(post) {
             return post.id === id
           }
