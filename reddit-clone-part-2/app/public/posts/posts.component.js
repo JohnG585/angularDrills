@@ -4,7 +4,7 @@
   angular.module('app')
     .component('posts', {
       controller: postsController,
-      templateUrl: './posts/posts.html',
+      templateUrl: './templates/posts.html',
     })
 
     postsController.$inject = ['postService']
