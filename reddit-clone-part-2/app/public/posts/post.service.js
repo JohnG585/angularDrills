@@ -7,15 +7,20 @@
     service.$inject = ['$http']
 
     function service($http) {
+
+      this.newpost = []
+
       this.getPosts = function() {
       return $http.get('/api/posts').then((results) => {
-        const posts = results.data;
-        return posts
+        return results.data
+        //might have to change for array
       })
     }
 
-      this.upVote = function() {
-        
+      this.addPost = function(newPost) {
+        return $http.post(`/api/posts`, newPost).then((result) => {
+          return result.data
+        })
       }
     }
 

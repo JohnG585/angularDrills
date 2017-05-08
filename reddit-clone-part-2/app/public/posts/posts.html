@@ -11,8 +11,8 @@
         </li>
         <div class="form-inline">
             <label for="sort">  Sort by </label>
-            <select ng-init = "ordering = '-votes'" ng-model = "ordering" class="form-control" ng-change = "$ctrl.filtering(ordering)" id="sort">
-  <option value = "-votes">Votes</option>
+            <select ng-model = "$ctrl.filtering" class="form-control" ng-change = "$ctrl.filtered()" id="sort">
+  <option value = "votes">Votes</option>
   <option value = "title">Title</option>
   <option value = "author">Author</option>
 </select>
@@ -22,7 +22,7 @@
     <div class="row collapse" id="myForm">
         <div class="col-md-8">
 
-            <form novalidate name="$ctrl.postForm" ng-submit="$ctrl.postAdded()">
+            <form novalidate name="$ctrl.postForm" ng-submit="$ctrl.createPost()">
                 <div class="form-group"
                 ng-class="{'has-error': $ctrl.postForm.title.$invalid}"
                 >
@@ -62,7 +62,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12" ng-repeat="post in $ctrl.posts | orderBy:$ctrl.selection | filter: filterSearch">
+        <div class="col-md-12" ng-repeat="post in $ctrl.posts | orderBy:$ctrl.sorted | filter: filterSearch">
 
             <div class="well">
                 <div class="media-left">
