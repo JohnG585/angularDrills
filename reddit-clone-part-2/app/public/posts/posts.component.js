@@ -25,11 +25,17 @@
           }
 
           vm.createPost = function() {
-            vm.post.created_at = new Date()
-            vm.post.vote_count = 0
+            vm.post = {
+              title: vm.post.title,
+              author: vm.post.author,
+              body: vm.post.body,
+              image_url: vm.post.image,
+              created_at: new Date(),
+              vote_count: 0
+            }
             postService.addPost(vm.post)
             .then((result) => {
-              vm.newPost.push(result)
+              vm.posts.push(result)
               delete vm.post
             })
           }
