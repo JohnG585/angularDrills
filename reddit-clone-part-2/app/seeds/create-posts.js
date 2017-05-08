@@ -2,7 +2,7 @@
 exports.seed = function(knex, Promise) {
 
   const text1 = [
-    "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    "Think about it: Dale has been using the pseudonym for years. It's one of the few things he's actually committed to, along with Joseph, Nancy and guns. The ONE time someone named 'Rusty Shackleford' comes along just HAPPENS to be the episode where he fakes his death? The REAL Shackleford - Dale - would know that the invading Mongolians of 2087 would try to take him out, so he had to fake his death in order to evade them.",
   ].join("\n")
 
   const text2 = [
@@ -12,9 +12,7 @@ exports.seed = function(knex, Promise) {
   ].join("\n\n")
 
   const text3 = [
-    "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.",
-    "I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.",
-    "I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with",
+    "Who else loves Bill???",
   ].join("\n\n")
 
   return knex('comments').del()
@@ -22,24 +20,24 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return Promise.all([
         createPost(
-          'A poem from me',
+          'Rusty Shackleford IS Dale. Dale is Rusty Shackleford!',
           text1,
-          'Ironic Irma',
-          'https://images.pexels.com/photos/211050/pexels-photo-211050.jpeg?h=350&auto=compress',
+          'Lady Bird',
+          'http://cdn.niketalk.com/2/2e/200x400px-LL-2e78e088_80590900.jpeg',
           new Date(2004, 12, 17)
         ),
         createPost(
-          'Oh poem my poem',
+          'Favorite KOTH moments GO',
           text2,
-          'Emo Emma',
-          'https://images.pexels.com/photos/1994/red-vintage-shoes-sport.jpg?h=350&auto=compress',
+          'PurseSnatcher',
+          'https://uproxx.files.wordpress.com/2015/02/bobby-hill-king-of-the-hill.png?w=650&h=492',
           new Date(2011, 11, 11)
         ),
         createPost(
-          "It's all about me",
+          "Bill is the best!!1!1",
           text3,
-          'Hipster Henry',
-          'https://images.pexels.com/photos/4787/feet-hipster-longboard-skateboard.jpg?h=350&auto=compress',
+          'Definitely Not Bill',
+          'https://pbs.twimg.com/profile_images/1646674059/image_400x400.jpg',
           new Date(2008, 5, 12)
         ),
       ])
@@ -48,6 +46,12 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         knex('comments').insert({post_id: postIds[0], content: 'Firsties!'}),
         knex('comments').insert({post_id: postIds[0], content: 'I did it for the lulz'}),
+        knex('comments').insert({post_id: postIds[1], content: 'The best moment is by far the episode your author name references'}),
+        knex('comments').insert({post_id: postIds[1], content: 'THAT\'S MY PURSE'}),
+        knex('comments').insert({post_id: postIds[1], content: 'I DON\'T KNOW YOU!'}),
+        knex('comments').insert({post_id: postIds[1], content: 'Any non-bill-centric episode works'}),
+        knex('comments').insert({post_id: postIds[1], content: 'Dancing Dogs! Don\'t remember the name of the episode.'}),
+        knex('comments').insert({post_id: postIds[1], content: 'The feels I get with that episode where Hank tells Mr Strickland he loves him...'}),
         knex('comments').insert({post_id: postIds[2], content: 'This comment thread is so lonely'}),
       ])
     })

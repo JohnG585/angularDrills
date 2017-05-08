@@ -1,5 +1,4 @@
 <main class="container">
-<h1>Hey!</h1>
 
  <div class="pull-right">
         <p><a class="btn btn-info" data-toggle="collapse" id="postButton" ng-click="setText()" data-target="#myForm">New Post</a></p>
@@ -12,7 +11,7 @@
         <div class="form-inline">
             <label for="sort">  Sort by </label>
             <select ng-model = "$ctrl.filtering" class="form-control" ng-change = "$ctrl.filtered()" id="sort">
-  <option value = "-votes">Votes</option>
+  <option value = "votes">Votes</option>
   <option value = "title">Title</option>
   <option value = "author">Author</option>
 </select>
@@ -80,7 +79,7 @@
       {{post.vote_count}}
       <a ng-click="$ctrl.downVote(post.id)"><i class="glyphicon glyphicon-arrow-down"></i></a>
     </h4>
-                    <img src='{{post.image_url}}' width="50%">
+                    <img src='{{post.image_url}}' width="300px">
 
                     <p>
                       <a href = '#' ui-sref = "edit({id: post.id })" >Edit Post</a><br>
