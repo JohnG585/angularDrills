@@ -1,14 +1,14 @@
 <div>
 <i class="glyphicon glyphicon-comment"> </i><ng-pluralize count="$ctrl.comments.length" when="{'1': '1 Comment', 'other':'{} Comments'}" ></ng-pluralize>
-<button ng-click = "showComments = !showComments">Show/Add Comments</button>
 <div class = "comments" ng-show = "showComments" class="row">
         <p ng-repeat="comment in $ctrl.comments">
             {{comment.content}}
         </p>
-        <div>
-          <input type = "text" class = "form-control" ng-model="$ctrl.postComment">
-          <button type = "submit" ng-click = "$ctrl.addComment($ctrl.postId)">Add Comment</button>
-      </div>
+        <form name="$ctrl.newComment" ng-submit="$ctrl.addComment($ctrl.postId)">
+          <input ng-model="$ctrl.comment.content" placeholder="Post comment here">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-</div>
+    <br>
+    <button ng-click = "showComments = !showComments">Toggle Comments</button>
 </div>

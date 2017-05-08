@@ -22,7 +22,7 @@
       }
 
       vm.addComment = function(id) {
-        postService.addComment(id, vm.comment).then((result) => {
+        postService.commentAdded(id, vm.comment).then((result) => {
           vm.comments.push(result)
           delete vm.comment
         })

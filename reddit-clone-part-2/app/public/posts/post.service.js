@@ -64,7 +64,7 @@
         })
       }
 
-      this.addComment = function(id, comment) {
+      this.commentAdded = function(id, comment) {
         return $http.post(`/api/posts/${id}/comments`, comment).then((result) => {
           return result.data
         })
