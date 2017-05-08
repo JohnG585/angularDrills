@@ -83,7 +83,7 @@
                     <img src='{{post.image_url}}' width="50%">
 
                     <p>
-                      <a ui-sref = "edit({id: $ctrl.post.edit })" >Edit Post</a><br>
+                      <a href = '#' ui-sref = "edit({id: post.id })" >Edit Post</a><br>
                         {{post.body}}
                     </p>
                     Posted on: {{ post.created_at | amCalendar }}

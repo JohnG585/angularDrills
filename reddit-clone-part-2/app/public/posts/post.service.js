@@ -37,15 +37,24 @@
       }
 
       this.editingPost = function(id) {
-        console.log('Got here as well')
-        return $http.get(`/api/posts/${id}`).then((result) => {
+        return $http.get(`/api/posts/`).then((result) => {
           return result.data
+        }).then((result) => {
+          return result.find((post) => post.id == id)
         })
       }
 
       this.deletePost = function(id) {
         return $http.delete(`/api/posts/${id}`).then((result) => {
           return result.data
+        })
+      }
+
+      this.editPost = function(id, newPost) {
+        return $http.patch(`/api/posts/${id}`, newPost).then((result) => {
+          return $http.get('/api/posts').then((result) => {
+            return result.data
+          })
         })
       }
     }

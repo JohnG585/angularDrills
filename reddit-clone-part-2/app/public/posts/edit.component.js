@@ -11,11 +11,21 @@
 
     function editPostController(postService, $state, $stateParams) {
       const vm = this
-      const postId = $stateParams.id
+       vm.posts = []
+       vm.post = {}
 
       vm.$onInit = function() {
-      postService.editingPost(id)
-      .then(post => vm.post = post)
-    }
+        const postId = $stateParams.id
+        postService.editingPost(postId).then((result) => {
+          vm.post = result
+        })
+      }
+
+      vm.editPost = function() {
+        postService.editPost(vm.post.id, vm.post).then((result) => {
+         $state.go('home')
+         vm.posts = result
+       })
+      }
   }
 })()
