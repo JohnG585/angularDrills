@@ -4,19 +4,20 @@
   angular.module('app')
     .component('posts', {
       controller: postsController,
-      templateUrl: './posts/posts.html'
+      templateUrl: './posts/posts.html',
     })
 
     postsController.$inject = ['postService']
       function postsController(postService) {
         const vm = this
-          vm.posts = []
+          // vm.posts = []
           vm.newPost = postService.new
           vm.post = {}
           vm.filtering = 'votes'
           vm.filtered = filtered
 
           vm.$onInit = function() {
+            vm.posts = []
 
             postService.getPosts()
               .then((posts) => {
@@ -39,6 +40,28 @@
               delete vm.post
             })
           }
+
+          vm.upVote = function(id) {
+            console.log('clicked!')
+            postService.upVote(id).then(() => {
+              let index = vm.posts.find(findPostID)
+                  index.vote_count++
+            })
+            function findPostID(post) {
+              return post.id === id
+            }
+        }
+
+        vm.downVote = function(id) {
+          console.log('clicked!')
+          postService.downVote(id).then(() => {
+            let index = vm.posts.find(findPostID)
+                index.vote_count--
+          })
+          function findPostID(post) {
+            return post.id === id
+          }
+      }
 
           function filtered() {
             switch (vm.filtering) {
