@@ -63,8 +63,9 @@
 
     <div class="row">
         <div class="col-md-12" ng-repeat="post in $ctrl.posts | orderBy:$ctrl.sorted | filter: filterSearch">
+                      <solo post = "$ctrl.posts"></solo>
 
-            <div class="well">
+            <!-- <div class="well">
                 <div class="media-left">
                     <img class="media-object">
                 </div>
@@ -88,7 +89,7 @@
                     Posted on: {{ post.created_at | amCalendar }}
                   <comments post-id="post.id"></comments>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <br>

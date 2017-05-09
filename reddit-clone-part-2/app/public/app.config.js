@@ -13,7 +13,6 @@
     $stateProvider
       .state({name: 'home', url: '/', component: 'posts'})
       .state({name: 'edit', url: '/posts/{id}/edit', component: 'forms'})
-      // .state({name: 'new', url: '/posts/new', component: 'forms'})
   }
 
 }());

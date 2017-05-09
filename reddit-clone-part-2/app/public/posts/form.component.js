@@ -5,9 +5,6 @@
     .component('forms', {
       templateUrl: './templates/edit.html',
       controller: formController,
-      // bindings: {
-      //   postId: "="
-      // }
     })
 
     formController.$inject = ['postService', '$state', '$stateParams']
