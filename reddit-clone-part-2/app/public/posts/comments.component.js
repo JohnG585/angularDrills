@@ -8,9 +8,9 @@
       bindings: {postId: '='}
     })
 
-    commentController.$inject = ['postService']
+    commentController.$inject = ['commentService']
 
-    function commentController(postService) {
+    function commentController(commentService) {
       const vm = this
       vm.comments = []
       vm.comment = {
@@ -19,13 +19,13 @@
       }
 
       vm.$onInit = function() {
-        postService.comments(vm.postId).then((result) => {
+        commentService.comments(vm.postId).then((result) => {
           vm.comments = result
         })
       }
 
       vm.addComment = function(id) {
-        postService.commentAdded(id, vm.comment).then((result) => {
+        commentService.commentAdded(id, vm.comment).then((result) => {
           vm.comments.push(result)
           delete vm.comment
         })

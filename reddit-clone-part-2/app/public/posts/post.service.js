@@ -42,29 +42,11 @@
         })
       }
 
-      this.deletePost = function(id) {
-        return $http.delete(`/api/posts/${id}`).then((result) => {
-          return result.data
-        })
-      }
-
       this.editPost = function(id, newPost) {
         return $http.patch(`/api/posts/${id}`, newPost).then((result) => {
           return $http.get('/api/posts').then((result) => {
             return result.data
           })
-        })
-      }
-
-      this.comments = function(id) {
-        return $http.get(`/api/posts/${id}/comments`).then((results) => {
-          return results.data
-        })
-      }
-
-      this.commentAdded = function(id, comment) {
-        return $http.post(`/api/posts/${id}/comments`, comment).then((result) => {
-          return result.data
         })
       }
     }

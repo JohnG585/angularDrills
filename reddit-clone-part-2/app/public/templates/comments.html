@@ -3,7 +3,7 @@
 <div class = "comments" ng-show = "showComments" class="row">
         <p ng-repeat="comment in $ctrl.comments">
             <img src="{{comment.image_url}}" width="100px">
-            <span class = "commentFont"> {{comment.content}}</span>
+            <span class="commentFont"> {{comment.content}}</span>
             &nbsp; Posted: {{comment.created_at | amCalendar}}
         </p>
         <form name="$ctrl.newComment" ng-submit="$ctrl.addComment($ctrl.postId)">
