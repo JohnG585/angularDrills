@@ -1,26 +1,24 @@
 (function() {
-  'use strict'
+  'use strict';
 
   angular.module('app')
     .service('postService', service)
 
-    service.$inject = ['$http']
+  service.$inject = ['$http'];
 
-    function service($http) {
+  function service($http) {
 
-
-      this.getPosts = function() {
+    this.getPosts = function() {
       return $http.get('/api/posts').then((results) => {
-        return results.data
-        //might have to change for array
-      })
-    }
+        return results.data;
+      });
+    };
 
-      this.addPost = function(newPost) {
-        return $http.post('/api/posts', newPost).then((result) => {
-          return result.data
-        })
-      }
+    this.addPost = function(newPost) {
+      return $http.post('/api/posts', newPost).then((result) => {
+        return result.data;
+      });
+    };
 
       this.upVote = function (id) {
         console.log('Got here as well, and the id is '+id)

@@ -1,11 +1,14 @@
 <div>
-<i class="glyphicon glyphicon-comment"> </i><ng-pluralize count="$ctrl.comments.length" when="{'1': '1 Comment', 'other':'{} Comments'}" ></ng-pluralize>
+<i class="glyphicon glyphicon-comment"> </i>&nbsp;<ng-pluralize count="$ctrl.comments.length" when="{'1': '1 Comment', 'other':'{} Comments'}" ></ng-pluralize>
 <div class = "comments" ng-show = "showComments" class="row">
         <p ng-repeat="comment in $ctrl.comments">
-            {{comment.content}}
+            <img src="{{comment.image_url}}" width="100px">
+            <span class = "commentFont"> {{comment.content}}</span>
+            &nbsp; Posted: {{comment.created_at | amCalendar}}
         </p>
         <form name="$ctrl.newComment" ng-submit="$ctrl.addComment($ctrl.postId)">
           <input ng-model="$ctrl.comment.content" placeholder="Post comment here">
+          <input id="image-url" ng-model="$ctrl.comment.image" name="image" placeholder="Image URL (optional)">
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

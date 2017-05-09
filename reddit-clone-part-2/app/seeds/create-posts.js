@@ -44,15 +44,15 @@ exports.seed = function(knex, Promise) {
     })
     .then(function (postIds) {
       return Promise.all([
-        knex('comments').insert({post_id: postIds[0], content: 'Firsties!'}),
-        knex('comments').insert({post_id: postIds[0], content: 'I did it for the lulz'}),
-        knex('comments').insert({post_id: postIds[1], content: 'The best moment is by far the episode your author name references'}),
-        knex('comments').insert({post_id: postIds[1], content: 'THAT\'S MY PURSE'}),
-        knex('comments').insert({post_id: postIds[1], content: 'I DON\'T KNOW YOU!'}),
-        knex('comments').insert({post_id: postIds[1], content: 'Any non-bill-centric episode works'}),
-        knex('comments').insert({post_id: postIds[1], content: 'Dancing Dogs! Don\'t remember the name of the episode.'}),
-        knex('comments').insert({post_id: postIds[1], content: 'The feels I get with that episode where Hank tells Mr Strickland he loves him...'}),
-        knex('comments').insert({post_id: postIds[2], content: 'This comment thread is so lonely'}),
+        knex('comments').insert({post_id: postIds[0], content: 'Firsties!', image_url: 'https://s-media-cache-ak0.pinimg.com/originals/8f/4f/eb/8f4feb79103aec2f94ea126acd9e4bc7.jpg'}),
+        knex('comments').insert({post_id: postIds[0], content: 'I did it for the lulz', image_url: 'https://s-media-cache-ak0.pinimg.com/originals/8f/4f/eb/8f4feb79103aec2f94ea126acd9e4bc7.jpg'}),
+        knex('comments').insert({post_id: postIds[1], content: 'The best moment is by far the episode your author name references', image_url: 'https://s-media-cache-ak0.pinimg.com/originals/8f/4f/eb/8f4feb79103aec2f94ea126acd9e4bc7.jpg'}),
+        knex('comments').insert({post_id: postIds[1], content: 'THAT\'S MY PURSE', image_url: 'https://pbs.twimg.com/profile_images/1203433008/image_400x400.jpg'}),
+        knex('comments').insert({post_id: postIds[1], content: 'I DON\'T KNOW YOU!', image_url: 'http://unrealitymag.com/wp-content/uploads/2012/07/rsz_luanne-platter.jpg'}),
+        knex('comments').insert({post_id: postIds[1], content: 'Any non-bill-centric episode works', image_url: 'http://movieboozer.com/wp-content/uploads/2013/07/boomhauer.png'}),
+        knex('comments').insert({post_id: postIds[1], content: 'Dancing Dogs! Don\'t remember the name of the episode.', image_url: 'https://s-media-cache-ak0.pinimg.com/originals/8f/4f/eb/8f4feb79103aec2f94ea126acd9e4bc7.jpg'}),
+        knex('comments').insert({post_id: postIds[1], content: 'The feels I get with that episode where Hank tells Mr Strickland he loves him...', image_url: 'https://s-media-cache-ak0.pinimg.com/originals/8f/4f/eb/8f4feb79103aec2f94ea126acd9e4bc7.jpg'}),
+        knex('comments').insert({post_id: postIds[2], content: 'This comment thread is so lonely', image_url: 'https://s-media-cache-ak0.pinimg.com/originals/8f/4f/eb/8f4feb79103aec2f94ea126acd9e4bc7.jpg'}),
       ])
     })
 

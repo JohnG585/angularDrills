@@ -13,7 +13,10 @@
     function commentController(postService) {
       const vm = this
       vm.comments = []
-      vm.comment = {}
+      vm.comment = {
+        content: vm.content,
+        image_url: vm.image
+      }
 
       vm.$onInit = function() {
         postService.comments(vm.postId).then((result) => {
