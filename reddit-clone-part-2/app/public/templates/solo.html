@@ -3,23 +3,39 @@
         <img class="media-object">
     </div>
     <div class="media-body">
-      <div class="text-left" ng-model="$ctrl.author">
-          {{post.author}}
+      <div class="text-left" ng-model="$ctrl.post.author">
+          {{$ctrl.post.author}}
       </div>
         <h4 class="media-heading">
-{{post.title}}
+{{$ctrl.post.title}}
 |
 <a ng-click="$ctrl.upVote(post.id)"><i class="glyphicon glyphicon-arrow-up"></i></a>
-{{post.vote_count}}
+{{$ctrl.post.vote_count}}
 <a ng-click="$ctrl.downVote(post.id)"><i class="glyphicon glyphicon-arrow-down"></i></a>
 </h4>
-        <img src='{{post.image_url}}' width="300px">
+        <img src='{{$ctrl.post.image_url}}' width="300px">
 
         <p>
           <a href = '#' ui-sref = "edit({id: post.id })" >Edit Post</a><br>
-            {{post.body}}
+            {{$ctrl.post.body}}
         </p>
-        Posted on: {{ post.created_at | amCalendar }}
-      <comments post-id="post.id"></comments>
+        Posted on: {{ $ctrl.post.created_at | amCalendar }}
+    </div>
+    <div>
+    <i class="glyphicon glyphicon-comment"> </i>&nbsp;<ng-pluralize count="$ctrl.comments.length" when="{'1': '1 Comment', 'other':'{} Comments'}" ></ng-pluralize>
+    <div class = "comments" ng-show = "showComments" class="row">
+            <p ng-repeat="comment in $ctrl.comments">
+                <img src="{{comment.image_url}}" width="100px">
+                <span class="commentFont"> {{comment.content}}</span>
+                &nbsp; Posted: {{comment.created_at | amCalendar}}
+            </p>
+            <form name="$ctrl.newComment" ng-submit="$ctrl.addComment()">
+              <input ng-model="$ctrl.comment.content" placeholder="Post comment here">
+              <input id="image-url" ng-model="$ctrl.comment.image" name="image" placeholder="Image URL (optional)">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <br>
+        <button ng-click = "showComments = !showComments">Toggle Comments</button>
     </div>
 </div>

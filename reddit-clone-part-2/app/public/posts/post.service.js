@@ -14,6 +14,12 @@
       });
     };
 
+    this.getPost = function(id) {
+    return $http.get(`/api/posts/${id}`).then( (result) => {
+  return result.data
+})
+}
+
     this.addPost = function(newPost) {
       return $http.post('/api/posts', newPost).then((result) => {
         return result.data;
@@ -21,14 +27,12 @@
     };
 
       this.upVote = function (id) {
-        console.log('Got here as well, and the id is '+id)
         return $http.post(`/api/posts/${id}/votes`).then((result) => {
           return result.data.vote_count
         })
       }
 
       this.downVote = function (id) {
-        console.log('Got here as well, and the id is '+id)
         return $http.delete(`/api/posts/${id}/votes`).then((result) => {
           return result.data.vote_count
         })

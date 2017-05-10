@@ -11,7 +11,6 @@
       function postsController(postService) {
         const vm = this
 
-        vm.newPost = postService.new;
         vm.post = {};
         vm.filtering = 'votes';
         vm.filtered = filtered;
@@ -42,27 +41,7 @@
             });
         };
 
-        vm.upVote = function(id) {
-          postService.upVote(id).then(() => {
-            let index = vm.posts.find(findPostID);
-            index.vote_count++
-          });
-          function findPostID(post) {
-            return post.id === id;
-          }
-        };
 
-        vm.downVote = function(id) {
-          let index = vm.posts.find(findPostID)
-          if (index.vote_count > 0) {
-            postService.downVote(id).then(() => {
-            index.vote_count--
-            });
-          }
-          function findPostID(post) {
-            return post.id === id
-          }
-        };
 
           function filtered() {
             switch (vm.filtering) {
